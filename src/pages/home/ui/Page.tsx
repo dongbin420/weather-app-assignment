@@ -4,6 +4,7 @@ import { mapToWeatherUiModel } from '@/entities/weather/model/mapToWeatherUiMode
 import { useCurrentCoords } from '@/shared/lib/geolocation/useCurrentCoords';
 import { useCoordToLabelQuery } from '@/entities/place/model/useCoordToLabelQuery';
 import { pickPlaceLabel } from '@/entities/place/model/pickPlaceLabel';
+import WeatherDetailView from '@/widgets/weather-detail/ui/WeatherDetailView';
 
 const HOURLY_COUNT = 24;
 
@@ -45,22 +46,5 @@ export function HomePage() {
 
   if (!weatherUi) return null;
 
-  return (
-    <div>
-      <h1>{weatherUi.placeLabel}</h1>
-
-      <div>현재: {weatherUi.currentTemp}°</div>
-      <div>
-        최저/최고: {weatherUi.todayMin}° / {weatherUi.todayMax}°
-      </div>
-
-      <ul>
-        {weatherUi.hourly.map((h, idx) => (
-          <li key={h.dt}>
-            {idx === 0 ? '지금' : h.timeLabel}: {h.temp}°
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+  return <WeatherDetailView weatherUi={weatherUi} />;
 }

@@ -1,3 +1,10 @@
+export interface OneCallWeather {
+  id: number;
+  main: string;
+  description: string;
+  icon: string;
+}
+
 export interface OneCallResponse {
   lat: number;
   lon: number;
@@ -6,10 +13,12 @@ export interface OneCallResponse {
   current: {
     dt: number;
     temp: number;
+    weather: OneCallWeather[];
   };
   hourly: Array<{
     dt: number;
     temp: number;
+    weather: OneCallWeather[];
   }>;
   daily: Array<{
     dt: number;
@@ -17,6 +26,7 @@ export interface OneCallResponse {
       min: number;
       max: number;
     };
+    weather: OneCallWeather[];
   }>;
 }
 
@@ -25,12 +35,20 @@ export interface OneCallParams {
   lon: number;
 }
 
+export interface WeatherUiCondition {
+  id: number;
+  main: string;
+  description: string;
+  icon: string;
+}
+
 export interface WeatherUiModel {
   placeLabel: string;
   currentTemp: number;
+  currentWeather: WeatherUiCondition | null;
   todayMin: number;
   todayMax: number;
-  hourly: Array<{ dt: number; temp: number; timeLabel: string }>;
+  hourly: Array<{ dt: number; temp: number; timeLabel: string; weather: WeatherUiCondition | null }>;
   timezone: string;
   timezoneOffset: number;
 }
