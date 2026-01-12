@@ -1,4 +1,4 @@
-import type { CoordToLabelResponse } from './types';
+import type { CoordToLabelResponse } from './types/fetchLabelTypes';
 
 export const pickPlaceLabel = (data: CoordToLabelResponse): string => {
   const doc = data.documents?.[0];

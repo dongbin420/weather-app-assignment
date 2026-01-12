@@ -6,6 +6,9 @@ import { useCurrentCoords } from '../shared/lib/geolocation/useCurrentCoords';
 import { useCoordToLabelQuery } from '../entities/place/model/useCoordToLabelQuery';
 import { pickPlaceLabel } from '../entities/place/model/pickPlaceLabel';
 
+import { useLabelToCoordQuery } from '../entities/place/model/useLabelToCoordQuery';
+import { pickFirstCoords } from '../entities/place/model/pickFirstCoords';
+
 const HOURLY_COUNT = 24;
 
 function App() {
