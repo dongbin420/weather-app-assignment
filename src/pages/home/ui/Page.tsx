@@ -4,7 +4,9 @@ import { mapToWeatherUiModel } from '@/entities/weather/model/mapToWeatherUiMode
 import { useCurrentCoords } from '@/shared/lib/geolocation/useCurrentCoords';
 import { useCoordToLabelQuery } from '@/entities/place/model/useCoordToLabelQuery';
 import { pickPlaceLabel } from '@/entities/place/model/pickPlaceLabel';
+import { getWeatherTheme } from '@/entities/weather/lib/getWeatherTheme';
 import WeatherDetailView from '@/widgets/weather-detail/ui/WeatherDetailView';
+import WeatherLayout from '@/widgets/layouts/weather/ui/WeatherLayout';
 
 const HOURLY_COUNT = 24;
 
@@ -43,8 +45,13 @@ export function HomePage() {
 
   if (oneCall.isLoading) return <div>날씨 불러오는 중...</div>;
   if (oneCall.error) return <div>날씨 에러: {oneCall.error.message}</div>;
-
   if (!weatherUi) return null;
 
-  return <WeatherDetailView weatherUi={weatherUi} />;
+  const theme = weatherUi.currentWeather ? getWeatherTheme(weatherUi.currentWeather.id) : 'clear';
+
+  return (
+    <WeatherLayout theme={theme}>
+      <WeatherDetailView weatherUi={weatherUi} />
+    </WeatherLayout>
+  );
 }

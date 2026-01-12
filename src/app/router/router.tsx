@@ -1,15 +1,20 @@
 import { createBrowserRouter } from 'react-router';
 import App from '@/app/App';
 import { HomePage } from '@/pages/home';
+import { FavoritePage } from '@/pages/favorite/index';
 
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    Component: App,
     children: [
       {
         index: true,
-        element: <HomePage />,
+        Component: HomePage,
+      },
+      {
+        path: 'favorite',
+        Component: FavoritePage,
       },
     ],
   },

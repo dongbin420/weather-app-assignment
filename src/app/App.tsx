@@ -2,11 +2,7 @@ import '@/app/styles/App.css';
 import { Outlet } from 'react-router';
 
 function App() {
-  return (
-    <>
-      <Outlet />
-    </>
-  );
+  return <Outlet />;
 }
 
 export default App;

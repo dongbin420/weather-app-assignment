@@ -13,17 +13,17 @@ function WeatherDetailView({ weatherUi }: WeatherDetailViewProps) {
 
       <section className="mt-4 rounded-xl border p-4">
         <div className="text-4xl font-bold">{weatherUi.currentTemp}°</div>
-        <div className="mt-2 text-sm text-gray-600">
+        <div className="mt-2 text-sm">
           최저/최고: {weatherUi.todayMin}° / {weatherUi.todayMax}°
         </div>
       </section>
 
       <section className="mt-4">
-        <h2 className="text-sm font-medium text-gray-700">시간대별</h2>
+        <h2 className="text-sm font-medium">시간대별</h2>
         <ul className="mt-2 grid grid-cols-3 gap-2">
           {weatherUi.hourly.map((h, idx) => (
             <li key={h.dt} className="rounded-lg border p-2 text-center">
-              <div className="text-xs text-gray-600">{idx === 0 ? '지금' : h.timeLabel}</div>
+              <div className="text-xs">{idx === 0 ? '지금' : h.timeLabel}</div>
               <div className="text-base font-semibold">{h.temp}°</div>
             </li>
           ))}
