@@ -34,10 +34,3 @@ export interface WeatherUiModel {
   timezone: string;
   timezoneOffset: number;
 }
-
-export interface UseOneCallArgs {
-  lat: number;
-  lon: number;
-  placeLabel: string;
-  hourlyCount?: number;
-}
