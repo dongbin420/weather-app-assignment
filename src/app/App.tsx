@@ -56,9 +56,9 @@ function App() {
       </div>
 
       <ul>
-        {weatherUi.hourly.map((h) => (
+        {weatherUi.hourly.map((h, idx) => (
           <li key={h.dt}>
-            {h.dt}: {h.temp}°
+            {idx === 0 ? '지금' : h.timeLabel}: {h.temp}°
           </li>
         ))}
       </ul>

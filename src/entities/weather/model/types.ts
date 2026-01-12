@@ -30,7 +30,7 @@ export interface WeatherUiModel {
   currentTemp: number;
   todayMin: number;
   todayMax: number;
-  hourly: Array<{ dt: number; temp: number }>;
+  hourly: Array<{ dt: number; temp: number; timeLabel: string }>;
   timezone: string;
   timezoneOffset: number;
 }
