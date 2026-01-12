@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { fetchLabel } from '../api/coordToLabel';
+import { fetchLabel } from '@/entities/place/api/coordToLabel';
 
 export const useCoordToLabelQuery = ({ lat, lon }: { lat: number; lon: number }) => {
   return useQuery({

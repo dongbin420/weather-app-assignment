@@ -1,9 +1,9 @@
-import { useOneCallQuery } from './../../../entities/weather/model/useOneCallQuery';
-import { mapToWeatherUiModel } from './../../../entities/weather/model/mapToWeatherUiModel';
 import { useMemo } from 'react';
-import { useCurrentCoords } from '../../../shared/lib/geolocation/useCurrentCoords';
-import { useCoordToLabelQuery } from './../../../entities/place/model/useCoordToLabelQuery';
-import { pickPlaceLabel } from '../../../entities/place/model/pickPlaceLabel';
+import { useOneCallQuery } from '@/entities/weather/model/useOneCallQuery';
+import { mapToWeatherUiModel } from '@/entities/weather/model/mapToWeatherUiModel';
+import { useCurrentCoords } from '@/shared/lib/geolocation/useCurrentCoords';
+import { useCoordToLabelQuery } from '@/entities/place/model/useCoordToLabelQuery';
+import { pickPlaceLabel } from '@/entities/place/model/pickPlaceLabel';
 
 const HOURLY_COUNT = 24;
 

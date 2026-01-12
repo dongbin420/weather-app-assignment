@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
-import type { LocationState } from './types';
-import { mapGeoErrorToMessage } from './messages';
+import type { LocationState } from '@/shared/lib/geolocation/types';
+import { mapGeoErrorToMessage } from '@/shared/lib/geolocation/messages';
 
 const TIMEOUT_MS = 8000;
 const MAXIMUM_AGE_MS = 60_000;

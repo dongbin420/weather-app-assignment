@@ -1,5 +1,5 @@
-import type { OneCallParams, OneCallResponse } from '../model/types';
-import { owmHttp } from '../../../shared/api/http';
+import type { OneCallParams, OneCallResponse } from '@/entities/weather/model/types';
+import { owmHttp } from '@/shared/api/http';
 
 export const fetchOneCall = async (params: OneCallParams): Promise<OneCallResponse> => {
   const { lat, lon } = params;

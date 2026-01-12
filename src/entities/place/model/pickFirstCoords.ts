@@ -1,4 +1,4 @@
-import type { LabelToCoordResponse } from './types/fetchCoordTypes';
+import type { LabelToCoordResponse } from '@/entities/place/model/types/fetchCoordTypes';
 
 export const pickFirstCoords = (data: LabelToCoordResponse): { lat: number; lon: number } | undefined => {
   const doc = data.documents?.[0];

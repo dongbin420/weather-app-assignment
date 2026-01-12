@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { fetchOneCall } from '../api/owmOneCall';
+import { fetchOneCall } from '@/entities/weather/api/owmOneCall';
 
 export const useOneCallQuery = ({ lat, lon }: { lat: number; lon: number }) => {
   return useQuery({

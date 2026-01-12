@@ -1,5 +1,5 @@
-import type { CoordToLabelParams, CoordToLabelResponse } from '../model/types/fetchLabelTypes';
-import { kakaoHttp } from '../../../shared/api/http';
+import type { CoordToLabelParams, CoordToLabelResponse } from '@/entities/place/model/types/fetchLabelTypes';
+import { kakaoHttp } from '@/shared/api/http';
 
 export const fetchLabel = async (params: CoordToLabelParams): Promise<CoordToLabelResponse> => {
   const { lon, lat } = params;

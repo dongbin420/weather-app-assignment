@@ -1,5 +1,5 @@
-import type { OneCallResponse, WeatherUiModel } from './types';
-import { formatHour } from '../../../shared/lib/time/formatHour';
+import type { OneCallResponse, WeatherUiModel } from '@/entities/weather/model/types';
+import { formatHour } from '@/shared/lib/time/formatHour';
 
 export const mapToWeatherUiModel = (placeLabel: string, rawData: OneCallResponse, hourlyCount = 24): WeatherUiModel => {
   const today = rawData.daily?.[0];
