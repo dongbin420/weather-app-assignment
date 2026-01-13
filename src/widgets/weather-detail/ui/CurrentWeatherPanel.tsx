@@ -3,9 +3,10 @@ import { formatLocalTime, formatTemp } from '../lib/formatters';
 
 interface CurrentWeatherPanelProps {
   weatherUi: WeatherUiModel;
+  contextLabel?: string;
 }
 
-function CurrentWeatherPanel({ weatherUi }: CurrentWeatherPanelProps) {
+function CurrentWeatherPanel({ weatherUi, contextLabel }: CurrentWeatherPanelProps) {
   const currentIcon = weatherUi.currentWeather?.icon ?? null;
   const currentDesc = weatherUi.currentWeather?.description ?? '';
   const nowLabel = formatLocalTime(weatherUi.timezoneOffset);
@@ -31,8 +32,18 @@ function CurrentWeatherPanel({ weatherUi }: CurrentWeatherPanelProps) {
         ) : null}
       </div>
 
-      <div className="flex flex-wrap items-center gap-3">
-        <h1 className="text-shadow-soft text-3xl font-semibold tracking-tight md:text-4xl">{weatherUi.placeLabel}</h1>
+      <div className="flex flex-col gap-1">
+        {contextLabel ? (
+          <span className="text-xs font-semibold tracking-wide text-emerald-300/80">{contextLabel}</span>
+        ) : null}
+        <h1 className="text-shadow-soft inline-flex items-center gap-2 text-3xl font-semibold tracking-tight md:text-4xl">
+          {contextLabel ? (
+            <svg className="h-5 w-5 text-white/85" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M3 11l18-9-9 18-2-7-7-2z" />
+            </svg>
+          ) : null}
+          <span>{weatherUi.placeLabel}</span>
+        </h1>
         <span className="text-sm text-white/70">오늘</span>
       </div>
 

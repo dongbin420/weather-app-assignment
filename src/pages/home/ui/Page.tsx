@@ -51,7 +51,7 @@ export function HomePage() {
 
   return (
     <WeatherLayout theme={theme}>
-      <WeatherDetailView weatherUi={weatherUi} />
+      <WeatherDetailView weatherUi={weatherUi} contextLabel="현재 위치" />
     </WeatherLayout>
   );
 }
