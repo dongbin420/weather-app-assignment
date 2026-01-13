@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
-import { useOneCallQuery } from '@/entities/weather/model/useOneCallQuery';
+import { useOneCallQuery } from '@/entities/weather/api/useOneCallQuery';
 import { mapToWeatherUiModel } from '@/entities/weather/model/mapToWeatherUiModel';
 import { useCurrentCoords } from '@/shared/lib/geolocation/useCurrentCoords';
-import { useCoordToLabelQuery } from '@/entities/place/model/useCoordToLabelQuery';
+import { useCoordToLabelQuery } from '@/entities/place/api/useCoordToLabelQuery';
 import { pickPlaceLabel } from '@/entities/place/model/pickPlaceLabel';
 import { getWeatherTheme } from '@/entities/weather/lib/getWeatherTheme';
 import WeatherDetailView from '@/widgets/weather-detail/ui/WeatherDetailView';

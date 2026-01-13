@@ -1,4 +1,6 @@
 import type { WeatherUiModel } from '@/entities/weather/model/types';
+import CurrentWeatherPanel from './CurrentWeatherPanel';
+import HourlyForecastPanel from './HourlyForecastPanel';
 
 interface WeatherDetailViewProps {
   weatherUi: WeatherUiModel;
@@ -6,29 +8,16 @@ interface WeatherDetailViewProps {
 
 function WeatherDetailView({ weatherUi }: WeatherDetailViewProps) {
   return (
-    <div className="mx-auto max-w-xl p-4">
-      <header className="flex items-center justify-between gap-3">
-        <h1 className="text-xl font-semibold">{weatherUi.placeLabel}</h1>
-      </header>
-
-      <section className="mt-4 rounded-xl border p-4">
-        <div className="text-4xl font-bold">{weatherUi.currentTemp}°</div>
-        <div className="mt-2 text-sm">
-          최저/최고: {weatherUi.todayMin}° / {weatherUi.todayMax}°
+    <div className="mx-auto w-full max-w-275 px-6 pb-16 pt-2 md:px-10">
+      <div className="relative overflow-hidden rounded-3xl border border-white/15">
+        <div className="pointer-events-none absolute inset-0 bg-black/10" />
+        <div className="relative bg-white/8 p-6 backdrop-blur-sm md:p-10">
+          <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
+            <CurrentWeatherPanel weatherUi={weatherUi} />
+            <HourlyForecastPanel hourly={weatherUi.hourly} />
+          </div>
         </div>
-      </section>
-
-      <section className="mt-4">
-        <h2 className="text-sm font-medium">시간대별</h2>
-        <ul className="mt-2 grid grid-cols-3 gap-2">
-          {weatherUi.hourly.map((h, idx) => (
-            <li key={h.dt} className="rounded-lg border p-2 text-center">
-              <div className="text-xs">{idx === 0 ? '지금' : h.timeLabel}</div>
-              <div className="text-base font-semibold">{h.temp}°</div>
-            </li>
-          ))}
-        </ul>
-      </section>
+      </div>
     </div>
   );
 }
