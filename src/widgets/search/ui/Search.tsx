@@ -3,12 +3,15 @@ import { searchPlacesFromList } from '@/features/search/lib/searchPlacesFromList
 import SearchDropDown from './SearchDropDown';
 import korea_districts from '@/features/search/data/korea_districts.json';
 import { useClickOutside } from '@/shared/lib/clickOut/useClickOutside';
+import { useNavigate } from 'react-router';
+import type { PlaceSearchResult } from '@/features/search/model/types';
 
 interface SearchProps {
   isFav?: boolean;
 }
 
 function Search({ isFav }: SearchProps) {
+  const navigate = useNavigate();
   const [query, setQuery] = useState('');
   const [open, setOpen] = useState(false);
 
@@ -16,9 +19,10 @@ function Search({ isFav }: SearchProps) {
   const results = searchPlacesFromList(korea_districts, query);
   const isDropdownVisible = open && results.length > 0;
 
-  const handleSelect = (label: string) => {
-    setQuery(label);
+  const handleSelect = (item: PlaceSearchResult) => {
+    setQuery(item.label);
     setOpen(false);
+    navigate(`/place/${encodeURIComponent(item.id)}`);
   };
 
   // 바깥 클릭시 닫기
