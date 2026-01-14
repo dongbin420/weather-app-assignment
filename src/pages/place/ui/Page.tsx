@@ -42,7 +42,7 @@ export function PlacePage() {
 
   return (
     <WeatherLayout theme={theme}>
-      {weatherUi ? <WeatherDetailView weatherUi={weatherUi} /> : <WeatherEmptyState />}
+      {weatherUi ? <WeatherDetailView weatherUi={weatherUi} placeId={raw} /> : <WeatherEmptyState />}
     </WeatherLayout>
   );
 }

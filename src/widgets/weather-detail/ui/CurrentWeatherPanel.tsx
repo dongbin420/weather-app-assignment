@@ -1,12 +1,14 @@
 import type { WeatherUiModel } from '@/entities/weather/model/types';
 import { formatLocalTime, formatTemp } from '../lib/formatters';
+import FavoriteStarButton from '@/features/favorite/ui/FavoriteStarButton';
 
 interface CurrentWeatherPanelProps {
   weatherUi: WeatherUiModel;
   contextLabel?: string;
+  placeId?: string;
 }
 
-function CurrentWeatherPanel({ weatherUi, contextLabel }: CurrentWeatherPanelProps) {
+function CurrentWeatherPanel({ weatherUi, contextLabel, placeId }: CurrentWeatherPanelProps) {
   const currentIcon = weatherUi.currentWeather?.icon ?? null;
   const currentDesc = weatherUi.currentWeather?.description ?? '';
   const nowLabel = formatLocalTime(weatherUi.timezoneOffset);
@@ -43,6 +45,7 @@ function CurrentWeatherPanel({ weatherUi, contextLabel }: CurrentWeatherPanelPro
             </svg>
           ) : null}
           <span>{weatherUi.placeLabel}</span>
+          {placeId ? <FavoriteStarButton placeId={placeId} usedInPage={true} /> : null}
         </h1>
         <span className="text-sm text-white/70">오늘</span>
       </div>

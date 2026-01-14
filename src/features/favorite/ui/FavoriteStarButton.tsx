@@ -4,9 +4,10 @@ import { useFavoriteToggleMessage } from '../lib/useFavoriteToggleMessage';
 
 interface Props {
   placeId: string;
+  usedInPage?: boolean;
 }
 
-function FavoriteStarButton({ placeId }: Props) {
+function FavoriteStarButton({ placeId, usedInPage }: Props) {
   const isFav = useFavoritesStore((s) => s.favoriteIds.includes(placeId));
   const { toggleFavorite } = useFavoriteToggleMessage();
 
@@ -19,7 +20,11 @@ function FavoriteStarButton({ placeId }: Props) {
       }}
       className="shrink-0 rounded-full p-1 hover:bg-white/10 cursor-pointer"
     >
-      <Star size={20} className={isFav ? 'text-yellow-300' : 'text-white/60'} fill={isFav ? 'currentColor' : 'none'} />
+      <Star
+        size={usedInPage ? 30 : 20}
+        className={isFav ? 'text-yellow-300' : 'text-white/60'}
+        fill={isFav ? 'currentColor' : 'none'}
+      />
     </button>
   );
 }
