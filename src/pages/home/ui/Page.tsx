@@ -26,7 +26,7 @@ export function HomePage() {
     return mapToWeatherUiModel(placeLabel, oneCall.data, HOURLY_COUNT);
   }, [oneCall.data, placeLabel]);
 
-  const theme = weatherUi?.currentWeather ? getWeatherTheme(weatherUi.currentWeather.id) : 'clear';
+  const theme = weatherUi?.currentWeather ? getWeatherTheme(weatherUi.currentWeather.id) : 'winter';
 
   if (loc.isLoading)
     return (

@@ -31,7 +31,7 @@ export function PlacePage() {
     return mapToWeatherUiModel(baseLabel, oneCall.data, HOURLY_COUNT, alias);
   }, [oneCall.data, baseLabel, alias]);
 
-  const theme = weatherUi?.currentWeather ? getWeatherTheme(weatherUi.currentWeather.id) : 'clear';
+  const theme = weatherUi?.currentWeather ? getWeatherTheme(weatherUi.currentWeather.id) : 'winter';
 
   if (oneCall.isLoading)
     return (
