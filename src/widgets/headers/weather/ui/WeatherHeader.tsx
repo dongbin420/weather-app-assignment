@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import Search from '@/widgets/search/ui/Search';
+import FavoriteLink from '@/features/favorite/ui/FavoriteLink';
 
 function WeatherHeader() {
   return (
@@ -9,8 +10,7 @@ function WeatherHeader() {
           weather-app
         </Link>
         <Search />
-        {/* 즐겨찾기 버튼 자리*/}
-        <div></div>
+        <FavoriteLink />
       </div>
     </header>
   );
