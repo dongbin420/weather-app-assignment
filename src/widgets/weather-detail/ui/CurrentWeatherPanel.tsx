@@ -1,6 +1,8 @@
 import type { WeatherUiModel } from '@/entities/weather/model/types';
 import { formatLocalTime, formatTemp } from '../lib/formatters';
 import FavoriteStarButton from '@/features/favorite/ui/FavoriteStarButton';
+import AliasEditButton from '@/features/favorite/ui/AliasEditButton';
+import { useFavoritesStore } from '@/features/favorite/model/store';
 
 interface CurrentWeatherPanelProps {
   weatherUi: WeatherUiModel;
@@ -12,6 +14,7 @@ function CurrentWeatherPanel({ weatherUi, contextLabel, placeId }: CurrentWeathe
   const currentIcon = weatherUi.currentWeather?.icon ?? null;
   const currentDesc = weatherUi.currentWeather?.description ?? '';
   const nowLabel = formatLocalTime(weatherUi.timezoneOffset);
+  const isFav = useFavoritesStore((s) => (placeId ? s.favoriteIds.includes(placeId) : false));
 
   return (
     <section className="flex min-h-60 flex-1 flex-col justify-end gap-6">
@@ -44,15 +47,19 @@ function CurrentWeatherPanel({ weatherUi, contextLabel, placeId }: CurrentWeathe
               <path d="M3 11l18-9-9 18-2-7-7-2z" />
             </svg>
           ) : null}
-          <span>{weatherUi.placeLabel}</span>
+          <span>{weatherUi.alias?.trim() ? weatherUi.alias : weatherUi.placeLabel}</span>
+          {isFav && placeId ? (
+            <AliasEditButton placeId={placeId} baseLabel={weatherUi.placeLabel} currentAlias={weatherUi.alias} />
+          ) : null}
           {placeId ? <FavoriteStarButton placeId={placeId} usedInPage={true} /> : null}
         </h1>
-        <span className="text-sm text-white/70">오늘</span>
+        {weatherUi.alias?.trim() ? <span className="text-white/80">{weatherUi.placeLabel}</span> : null}
+        <span className="text-sm text-white/60">오늘</span>
       </div>
 
       <div className="flex flex-wrap items-center gap-3 text-sm text-white/80">
         <div className="rounded-full border border-white/20 bg-white/10 px-3 py-1 backdrop-blur">
-          최고 {formatTemp(weatherUi.todayMax)} · 최저 {formatTemp(weatherUi.todayMin)}
+          최저 {formatTemp(weatherUi.todayMin)} / 최고 {formatTemp(weatherUi.todayMax)}
         </div>
         {currentDesc ? (
           <div className="rounded-full border border-white/20 bg-white/10 px-3 py-1 backdrop-blur">{currentDesc}</div>

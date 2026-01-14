@@ -12,12 +12,15 @@ import { useMemo } from 'react';
 import { HOURLY_COUNT } from '@/shared/constants/constants';
 import { getWeatherTheme } from '@/entities/weather/lib/getWeatherTheme';
 import { idToLabel } from '@/shared/lib/place/idToLabel';
+import { useFavoritesStore } from '@/features/favorite/model/store';
 
 export function PlacePage() {
   const { id: placeId } = useParams<{ id: string }>();
-  const raw = placeId ? decodeURIComponent(placeId) : '';
-  const placeLabel = raw ? idToLabel(raw) : '';
-  const coordQuery = useLabelToCoordQuery(placeLabel);
+  const rawPlaceId = placeId ? decodeURIComponent(placeId) : '';
+  const baseLabel = rawPlaceId ? idToLabel(rawPlaceId) : '';
+  const alias = useFavoritesStore((s) => s.aliasesById?.[rawPlaceId]);
+
+  const coordQuery = useLabelToCoordQuery(baseLabel);
   const coords = coordQuery.data ? pickFirstCoords(coordQuery.data) : undefined;
   const lat = coords?.lat ? coords.lat : Number.NaN;
   const lon = coords?.lon ? coords.lon : Number.NaN;
@@ -25,8 +28,8 @@ export function PlacePage() {
 
   const weatherUi = useMemo(() => {
     if (!hasMinimumWeatherData(oneCall.data)) return undefined;
-    return mapToWeatherUiModel(placeLabel, oneCall.data, HOURLY_COUNT);
-  }, [oneCall.data, placeLabel]);
+    return mapToWeatherUiModel(baseLabel, oneCall.data, HOURLY_COUNT, alias);
+  }, [oneCall.data, baseLabel, alias]);
 
   const theme = weatherUi?.currentWeather ? getWeatherTheme(weatherUi.currentWeather.id) : 'clear';
 
@@ -43,7 +46,7 @@ export function PlacePage() {
 
   return (
     <WeatherLayout theme={theme}>
-      {weatherUi ? <WeatherDetailView weatherUi={weatherUi} placeId={raw} /> : <WeatherEmptyState />}
+      {weatherUi ? <WeatherDetailView weatherUi={weatherUi} placeId={rawPlaceId} /> : <WeatherEmptyState />}
     </WeatherLayout>
   );
 }

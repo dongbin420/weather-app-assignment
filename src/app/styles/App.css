@@ -1,5 +1,9 @@
 @import 'tailwindcss';
 
+@theme {
+  --breakpoint-xs: 28rem;
+}
+
 *,
 *::before,
 *::after {
@@ -10,7 +14,7 @@ body {
   font-family: 'Inter', sans-serif;
   letter-spacing: -0.8px;
   font-weight: 400;
-  color: #1f2937;
+  color: white;
 }
 
 .scrollbar-hide {

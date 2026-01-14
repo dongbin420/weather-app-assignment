@@ -1,4 +1,4 @@
-export type WeatherTheme = 'thunder' | 'rain' | 'snow' | 'clear' | 'clouds' | 'etc';
+export type WeatherTheme = 'thunder' | 'rain' | 'snow' | 'clear' | 'clouds' | 'etc' | 'winter';
 
 export const getWeatherTheme = (id: number): WeatherTheme => {
   if (id >= 200 && id < 300) return 'thunder';

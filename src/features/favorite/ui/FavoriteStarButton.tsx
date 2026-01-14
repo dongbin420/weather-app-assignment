@@ -21,7 +21,7 @@ function FavoriteStarButton({ placeId, usedInPage }: Props) {
       className="shrink-0 rounded-full p-1 hover:bg-white/10 cursor-pointer"
     >
       <Star
-        size={usedInPage ? 30 : 20}
+        size={usedInPage ? 40 : 20}
         className={isFav ? 'text-yellow-300' : 'text-white/60'}
         fill={isFav ? 'currentColor' : 'none'}
       />

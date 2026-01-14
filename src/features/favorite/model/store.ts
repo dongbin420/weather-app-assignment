@@ -10,12 +10,20 @@ export const useFavoritesStore = create<FavoritesState>()(
       favoriteIds: [],
       aliasesById: {},
 
-      // 즐겨찾기
       toggle: (id) => {
         const ids = get().favoriteIds;
 
         if (ids.includes(id)) {
-          set({ favoriteIds: ids.filter((x) => x !== id) });
+          set((state) => {
+            const nextAliases = { ...state.aliasesById };
+            delete nextAliases[id];
+
+            return {
+              favoriteIds: state.favoriteIds.filter((x) => x !== id),
+              aliasesById: nextAliases,
+            };
+          });
+
           return { ok: true, mode: 'removed' };
         }
 
@@ -28,8 +36,15 @@ export const useFavoritesStore = create<FavoritesState>()(
       },
 
       remove: (id) => {
-        const ids = get().favoriteIds;
-        set({ favoriteIds: ids.filter((x) => x !== id) });
+        set((state) => {
+          const nextAliases = { ...state.aliasesById };
+          delete nextAliases[id];
+
+          return {
+            favoriteIds: state.favoriteIds.filter((x) => x !== id),
+            aliasesById: nextAliases,
+          };
+        });
       },
 
       isFavorite: (id) => get().favoriteIds.includes(id),

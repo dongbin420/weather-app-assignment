@@ -44,6 +44,7 @@ export interface WeatherUiCondition {
 
 export interface WeatherUiModel {
   placeLabel: string;
+  alias?: string;
   currentTemp: number;
   currentWeather: WeatherUiCondition | null;
   todayMin: number;

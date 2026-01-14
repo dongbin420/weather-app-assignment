@@ -1,7 +1,12 @@
 import type { OneCallResponse, WeatherUiModel } from '@/entities/weather/model/types';
 import { formatHour } from '@/shared/lib/time/formatHour';
 
-export const mapToWeatherUiModel = (placeLabel: string, rawData: OneCallResponse, hourlyCount = 24): WeatherUiModel => {
+export const mapToWeatherUiModel = (
+  placeLabel: string,
+  rawData: OneCallResponse,
+  hourlyCount = 24,
+  alias?: string,
+): WeatherUiModel => {
   const today = rawData.daily?.[0];
 
   if (!today) {
@@ -10,6 +15,7 @@ export const mapToWeatherUiModel = (placeLabel: string, rawData: OneCallResponse
 
   return {
     placeLabel,
+    alias,
     currentTemp: rawData.current.temp,
     currentWeather: rawData.current.weather[0],
     todayMin: today.temp.min,
