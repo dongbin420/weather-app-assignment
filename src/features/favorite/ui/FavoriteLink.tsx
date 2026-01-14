@@ -21,20 +21,18 @@ function FavoriteLink() {
     >
       <Star className="h-8 w-8 text-white fill-white" />
       <span className="text-[11px] font-medium text-white/90 leading-none">즐겨찾기</span>
-      {count > 0 && (
-        <span
-          className="
-            absolute right-0 -top-1.5
+      <span
+        className="
+            absolute right-0 -top-2
             h-5 min-w-5
             rounded-full
             bg-yellow-400
             text-[13px] font-bold text-white
             flex justify-center
           "
-        >
-          {count}
-        </span>
-      )}
+      >
+        {count}
+      </span>
     </Link>
   );
 }

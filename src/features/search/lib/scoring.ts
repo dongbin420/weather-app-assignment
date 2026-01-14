@@ -1,7 +1,8 @@
 import type { ScoredPlace } from '../model/types';
+import { idToLabel } from '@/shared/lib/place/idToLabel';
 
 export const scorePlace = (raw: string, query: string): ScoredPlace | null => {
-  const searchable = raw.split('-').join(' ').trim();
+  const searchable = idToLabel(raw);
   const q = query.trim();
   const pos = searchable.indexOf(q);
 

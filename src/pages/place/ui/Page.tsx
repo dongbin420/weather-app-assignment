@@ -11,11 +11,12 @@ import { pickFirstCoords } from '@/entities/place/model/pickFirstCoords';
 import { useMemo } from 'react';
 import { HOURLY_COUNT } from '@/shared/constants/constants';
 import { getWeatherTheme } from '@/entities/weather/lib/getWeatherTheme';
+import { idToLabel } from '@/shared/lib/place/idToLabel';
 
 export function PlacePage() {
   const { id: placeId } = useParams<{ id: string }>();
   const raw = placeId ? decodeURIComponent(placeId) : '';
-  const placeLabel = raw ? raw.split('-').join(' ').trim() : '';
+  const placeLabel = raw ? idToLabel(raw) : '';
   const coordQuery = useLabelToCoordQuery(placeLabel);
   const coords = coordQuery.data ? pickFirstCoords(coordQuery.data) : undefined;
   const lat = coords?.lat ? coords.lat : Number.NaN;
