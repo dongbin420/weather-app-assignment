@@ -10,7 +10,7 @@ import WeatherDetailView from '@/widgets/weather-detail/ui/WeatherDetailView';
 import WeatherLayout from '@/widgets/layouts/weather/ui/WeatherLayout';
 import WeatherEmptyState from '@/widgets/weather-empty/ui/WeatherEmptyState';
 import StatusMessage from '@/widgets/status/ui/StatusMessage';
-import { HOURLY_COUNT } from '@/shared/constants/oneCall';
+import { HOURLY_COUNT } from '@/shared/constants/constants';
 
 export function HomePage() {
   const loc = useCurrentCoords();

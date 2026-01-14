@@ -9,7 +9,7 @@ import { hasMinimumWeatherData } from '@/entities/weather/model/hasMinimumWeathe
 import { useOneCallQuery } from '@/entities/weather/api/useOneCallQuery';
 import { pickFirstCoords } from '@/entities/place/model/pickFirstCoords';
 import { useMemo } from 'react';
-import { HOURLY_COUNT } from '@/shared/constants/oneCall';
+import { HOURLY_COUNT } from '@/shared/constants/constants';
 import { getWeatherTheme } from '@/entities/weather/lib/getWeatherTheme';
 
 export function PlacePage() {

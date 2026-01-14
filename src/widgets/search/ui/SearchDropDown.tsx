@@ -1,30 +1,26 @@
 import type { PlaceSearchResult } from '@/features/search/model/types';
+import SearchDropDownItem from './SearchDropDownItem';
 
 interface SearchDropDownProps {
   results: PlaceSearchResult[];
-  onSelect: (label: PlaceSearchResult) => void;
+  onSelect: (item: PlaceSearchResult) => void;
 }
 
 function SearchDropDown({ results, onSelect }: SearchDropDownProps) {
   return (
-    <ul
+    <div
       className={[
-        'absolute z-50 w-full',
+        'absolute z-50 w-full overflow-hidden',
         'rounded-b-2xl border border-t-0 border-white/45',
         'bg-black/20 backdrop-blur',
-        'overflow-hidden',
       ].join(' ')}
     >
-      {results.map((item) => (
-        <li
-          key={item.id}
-          onClick={() => onSelect(item)}
-          className={['cursor-pointer px-4 py-2 text-sm text-white/80', 'hover:bg-white/15'].join(' ')}
-        >
-          {item.label}
-        </li>
-      ))}
-    </ul>
+      <ul>
+        {results.map((item) => (
+          <SearchDropDownItem key={item.id} item={item} onSelect={onSelect} />
+        ))}
+      </ul>
+    </div>
   );
 }
 
