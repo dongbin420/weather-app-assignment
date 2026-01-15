@@ -41,18 +41,20 @@ function CurrentWeatherPanel({ weatherUi, contextLabel, placeId }: CurrentWeathe
         {contextLabel ? (
           <span className="text-xs font-semibold tracking-wide text-emerald-300/80">{contextLabel}</span>
         ) : null}
-        <h1 className="text-shadow-soft inline-flex items-center gap-2 text-3xl font-semibold tracking-tight md:text-4xl">
-          {contextLabel ? (
-            <svg className="h-5 w-5 text-white/85" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M3 11l18-9-9 18-2-7-7-2z" />
-            </svg>
-          ) : null}
-          <span>{weatherUi.alias?.trim() ? weatherUi.alias : weatherUi.placeLabel}</span>
+        <div className="flex items-center gap-2">
+          <h1 className="text-shadow-soft inline-flex items-center gap-2 text-3xl font-semibold tracking-tight md:text-4xl">
+            {contextLabel ? (
+              <svg className="h-5 w-5 text-white/85" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M3 11l18-9-9 18-2-7-7-2z" />
+              </svg>
+            ) : null}
+            <span>{weatherUi.alias?.trim() ? weatherUi.alias : weatherUi.placeLabel}</span>
+          </h1>
           {isFav && placeId ? (
             <AliasEditButton placeId={placeId} baseLabel={weatherUi.placeLabel} currentAlias={weatherUi.alias} />
           ) : null}
           {placeId ? <FavoriteStarButton placeId={placeId} usedInPage={true} /> : null}
-        </h1>
+        </div>
         {weatherUi.alias?.trim() ? <span className="text-white/80">{weatherUi.placeLabel}</span> : null}
         <span className="text-sm text-white/60">오늘</span>
       </div>

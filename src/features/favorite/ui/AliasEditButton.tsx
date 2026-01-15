@@ -49,7 +49,7 @@ function AliasEditButton({ placeId, baseLabel, currentAlias }: AliasEditButtonPr
           e.stopPropagation();
           handleOpen();
         }}
-        className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white/80 hover:bg-white/20 hover:text-white transition cursor-pointer"
+        className="inline-flex shrink-0 h-7 w-7 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white/80 hover:bg-white/20 hover:text-white transition cursor-pointer"
       >
         <Pencil className="h-4 w-4" />
       </button>
