@@ -13,7 +13,7 @@ Open Weather Map의 One Call API와 카카오의 로컬 API를 이용하여 지�
 본 프로젝트는 외부 Open API(OpenWeather, Kakao Local)를 사용하므로
 로컬 실행을 위해 개인 API 키 설정이 필요합니다.
 
-### 환경변수 설정
+### 1. 환경변수 설정
 
 프로젝트 루트에 `.env` 파일을 생성한 뒤, 아래 값을 입력하고, 키를 추가해주세요.
 
@@ -27,9 +27,8 @@ VITE_KAKAO_BASE_URL=https://dapi.kakao.com
 # KAKAO REST API KEY
 VITE_KAKAO_REST_KEY=
 ```
-> ⚠️**Vite**에서는 환경 변수 이름이 반드시 `VITE_`로 시작해야 클라이언트 코드에서 접근할 수 있습니다.  
 
-### API 키 발급 방법
+### 2. API 키 발급 방법
 
 - OpenWeather API
   - https://openweathermap.org/api
@@ -38,4 +37,10 @@ VITE_KAKAO_REST_KEY=
   - https://developers.kakao.com/docs/latest/ko/tutorial/start
   - REST API 키 사용
 
+### 3. 프로젝트 실행
+
+```bash
+npm install
+npm run dev
+```
 
