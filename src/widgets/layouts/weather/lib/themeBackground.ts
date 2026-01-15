@@ -1,10 +1,10 @@
 import type { WeatherTheme } from '@/entities/weather/lib/getWeatherTheme';
 
-import thunder from '../assets/thunder.webp';
-import rain from '../assets/rain.webp';
-import snow from '../assets/snow.webp';
-import clear from '../assets/clear.webp';
-import clouds from '../assets/cloud.webp';
+import thunder from '/thunder.webp';
+import rain from '/rain.webp';
+import snow from '/snow.webp';
+import clear from '/clear.webp';
+import clouds from '/cloud.webp';
 import winter from '/winter.webp';
 
 export const themeBackground: Record<WeatherTheme, string> = {
