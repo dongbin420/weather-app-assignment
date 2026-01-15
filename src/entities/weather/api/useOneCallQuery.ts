@@ -6,7 +6,7 @@ export const useOneCallQuery = ({ lat, lon }: { lat: number; lon: number }) => {
     queryKey: ['onecall', { lat, lon }],
     queryFn: () => fetchOneCall({ lat, lon }),
     enabled: Number.isFinite(lat) && Number.isFinite(lon),
-    staleTime: 5 * 60 * 1000,
+    staleTime: 1 * 60 * 1000,
     refetchOnWindowFocus: false,
   });
 };
