@@ -26,7 +26,7 @@ export function HomePage() {
     return mapToWeatherUiModel(placeLabel, oneCall.data, HOURLY_COUNT);
   }, [oneCall.data, placeLabel]);
 
-  const theme = weatherUi?.currentWeather ? getWeatherTheme(weatherUi.currentWeather.id) : 'winter';
+  const isCoordsReady = Number.isFinite(lat) && Number.isFinite(lon);
 
   if (loc.isLoading)
     return (
@@ -52,7 +52,7 @@ export function HomePage() {
     );
   }
 
-  if (oneCall.isLoading)
+  if (oneCall.isLoading || !isCoordsReady)
     return (
       <StatusMessage>
         <div role="status" aria-label="loading">
@@ -62,6 +62,8 @@ export function HomePage() {
     );
 
   if (oneCall.error) return <StatusMessage>날씨 에러: {oneCall.error.message}</StatusMessage>;
+
+  const theme = weatherUi?.currentWeather ? getWeatherTheme(weatherUi.currentWeather.id) : 'winter';
 
   return (
     <WeatherLayout theme={theme}>
