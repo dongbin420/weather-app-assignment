@@ -39,7 +39,7 @@ function AliasEditModal({ open, value, onChange, onCancel, onSubmit }: AliasEdit
         }}
       >
         <h2 className="text-sm font-semibold">즐겨찾기 이름 변경</h2>
-        <p className="mt-2 text-xs text-white/70">카드에서 보이는 이름을 변경할 수 있습니다.</p>
+        <p className="mt-2 text-xs text-white/70">장소의 이름을 변경할 수 있습니다.</p>
         <div className="mt-3">
           <input
             value={value}

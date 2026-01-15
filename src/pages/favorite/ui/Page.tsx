@@ -17,7 +17,7 @@ export function FavoritePage() {
             <span>현재 시각 {formattedUserTime}</span>
           </div>
           {ids.length === 0 ? (
-            '즐겨찾기에 추가된 장소가 없습니다.'
+            <div>즐겨찾기에 추가된 장소가 없습니다.</div>
           ) : (
             <ul className="grid gap-4">
               {ids.map((id) => (
